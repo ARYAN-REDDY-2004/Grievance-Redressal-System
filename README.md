@@ -62,3 +62,23 @@ Backend: Python (Flask)
 
 Data Storage: In-memory Python data structures (data.py)
 
+##  🔑 Sample Login Credentials:
+##  Citizen:
+
+Email: citizen@gmail.com
+
+Password: citizen123
+
+##  Government Official:
+
+Email: admin@gov.in
+
+Password: admin123
+
+##  🚀 Future Enhancements:
+
+Automatic escalation based on SLA
+
+Secure authentication with password hashing
+
+Email/SMS notification system
