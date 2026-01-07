@@ -15,23 +15,6 @@ Allow manual escalation and status updates
 
 Improve transparency in grievance resolution
 
-## Folder Structure:
-
-Grievance-System-Project/
-│
-├── static/
-│   └── style.css
-│
-├── templates/
-│   ├── login.html
-│   ├── citizen.html
-│   └── admin.html
-│
-├── app.py
-├── data.py
-└── req.txt
-
-
 ## 🧑‍🤝‍🧑 User Roles:
 ## 👤 Citizen:
 
