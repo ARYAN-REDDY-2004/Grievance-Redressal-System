@@ -1,4 +1,4 @@
-# Grievance-Redressal-System
+# Grievance-Redressal-System:
 ## Project Description:
 
 The Grievance Redressal System is a web-based application designed to provide an efficient and user-friendly platform for citizens to register civic grievances and for government officials to manage and resolve them. The system focuses on organized complaint handling, status tracking, and role-based access, ensuring transparency and accountability in grievance management.
@@ -15,14 +15,14 @@ Allow manual escalation and status updates
 
 Improve transparency in grievance resolution
 
-🧑‍🤝‍🧑 User Roles:
-👤 Citizen:
+## 🧑‍🤝‍🧑 User Roles:
+## 👤 Citizen:
 
 Register complaints with issue description and category
 
 View assigned officer and complaint status
 
-🏛 Government Official (Admin)
+## 🏛 Government Official (Admin):
 
 View all registered complaints
 
@@ -30,7 +30,7 @@ Update complaint status (Assigned / In Progress / Resolved / Escalated)
 
 Manually escalate complaints when required
 
-⚙️ Key Features
+## ⚙️ Key Features:
 
 🔐 Role-based login system
 
@@ -44,7 +44,7 @@ Manually escalate complaints when required
 
 📊 Centralized complaint management dashboard
 
-🔄 Complaint Handling Process
+## 🔄 Complaint Handling Process:
 
 Citizen registers a grievance
 
@@ -54,9 +54,7 @@ Official updates complaint status manually
 
 Complaints can be escalated manually if required
 
-Citizen can track complaint progress
-
-🛠️ Technology Stack
+##  🛠️ Technology Stack:
 
 Frontend: HTML5, CSS3, JavaScript
 
@@ -64,4 +62,3 @@ Backend: Python (Flask)
 
 Data Storage: In-memory Python data structures (data.py)
 
-Architecture: Client–Server Model
