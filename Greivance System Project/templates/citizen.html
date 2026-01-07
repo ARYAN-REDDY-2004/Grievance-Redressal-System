@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citizen Grievance Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+    <h2>Register Complaint</h2>
+
+    <input id="issue" placeholder="Issue description">
+
+    <select id="type">
+        <option>Road</option>
+        <option>Water</option>
+        <option>Electricity</option>
+    </select>
+
+    <button onclick="submitComplaint()">Submit</button>
+
+    <!-- Success UI -->
+    <!-- Success UI -->
+<div id="successBox" class="success" style="display:none;">
+     <h3>✅ Complaint Registered Successfully</h3>
+
+    <p><b>Complaint ID:</b> <span id="cid"></span></p>
+    <p><b>Issue Type:</b> <span id="issueType"></span></p>
+    <p><b>Issue Description:</b> <span id="issueDesc"></span></p>
+    <p><b>Engineer ID:</b> <span id="engId"></span></p>
+    <p><b>Assigned Engineer:</b> <span id="engineer"></span></p>
+    <p><b>Resolution Deadline (SLA):</b> <span id="deadline"></span></p>
+
+</div>
+
+
+
+<script>
+    
+function submitComplaint() {
+    const issue = document.getElementById("issue").value;
+    const type = document.getElementById("type").value;
+
+    if (!issue) {
+        alert("Please enter issue description");
+        return;
+    }
+
+    fetch("/complaint", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    issue: issue,
+    description: issue,
+    type: type
+  })
+})
+    .then(res => res.json())
+    .then(data => {
+    document.getElementById("successBox").style.display = "block";
+
+    document.getElementById("cid").innerText =
+        data.complaint.id;
+
+    document.getElementById("issueType").innerText =
+        data.complaint.type;
+
+     document.getElementById("issueDesc").innerText =
+        data.complaint.description;
+
+    document.getElementById("engId").innerText =
+        data.complaint.engineer_id;
+
+    document.getElementById("engineer").innerText =
+        data.complaint.officer;
+
+    document.getElementById("deadline").innerText =
+        data.complaint.deadline;
+})
+};
+</script>
+</body>
+</html>

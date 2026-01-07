@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin – Grievance Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Admin Grievance Dashboard</h2>
+
+    <table border="1" width="100%" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Issue</th>
+                <th>Type</th>
+                <th>Engineer</th>
+                <th>Status</th>
+                <th>Deadline (SLA)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="complaintTable">
+            <!-- Complaints loaded here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+fetch("/complaints")
+    .then(res => res.json())
+    .then(data => {
+        const table = document.getElementById("complaintTable");
+
+        data.forEach(c => {
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${c.id}</td>
+                <td>${c.description}</td>
+                <td>${c.type}</td>
+                <td>${c.officer}</td>
+                <td>
+                    <select onchange="updateStatus(${c.id}, this.value)">
+                        <option ${c.status === "Pending" ? "selected" : ""}>Pending</option>
+                        <option ${c.status === "In Progress" ? "selected" : ""}>In Progress</option>
+                        <option ${c.status === "Resolved" ? "selected" : ""}>Resolved</option>
+                        <option ${c.status === "Escalated" ? "selected" : ""}>Escalated</option>
+                    </select>
+                </td>
+                <td>${c.deadline}</td>
+                <td>
+                    <button onclick="escalate(${c.id})">Escalate</button>
+                </td>
+            `;
+
+            table.appendChild(row);
+        });
+    });
+
+function updateStatus(id, status) {
+    fetch(`/update/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status })
+    })
+    .then(res => res.json())
+    .then(data => alert(data.message));
+}
+
+function escalate(id) {
+    fetch("/escalate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id })
+    })
+    .then(() => alert("Complaint escalated successfully"));
+}
+</script>
+
+</body>
+</html>
+
